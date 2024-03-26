@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Books</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.min.css}">
+</head>
+<body>
+<div>
+    <input type="text" id="search" placeholder="Search by ISBN, author, title, year of publication">
+</div>
+<div th:each="book : ${books}" style="display: flex; flex-wrap: wrap;">
+    <div style="width: 33%;">
+        <img th:src="${book.imageURL}" alt="Book image">
+        <h2 th:text="${book.title}"></h2>
+        <h3 th:text="${'Author: ' + book.author}"></h3>
+        <button onclick="window.location.href=`/api/books/`${book.id}}">Details</button>
+    </div>
+</div>
+
+
+</body>
+</html>
